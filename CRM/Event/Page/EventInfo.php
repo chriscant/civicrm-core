@@ -274,6 +274,11 @@ class CRM_Event_Page_EventInfo extends CRM_Core_Page {
       FALSE,
       $hasWaitingList
     );
+    $eventEmptySeats = CRM_Event_BAO_Participant::eventFull($this->_id,
+      TRUE,
+      $hasWaitingList
+    );
+    $this->assign('emptySeats', $eventEmptySeats);
 
     $allowRegistration = FALSE;
     $isEventOpenForRegistration = CRM_Event_BAO_Event::validRegistrationRequest($values['event'], $this->_id);
